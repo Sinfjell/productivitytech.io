@@ -19,8 +19,7 @@ export default async function BlogPage() {
   }
 
   return (
-    <div className="mx-auto max-w-6xl px-4">
-      <div className="py-16 sm:py-20">
+    <div className="mx-auto max-w-6xl px-4 py-16 sm:py-20">
         <div className="mb-12">
           <h1 className="text-balance text-4xl font-semibold tracking-tight sm:text-5xl">
             Blog
@@ -93,7 +92,6 @@ export default async function BlogPage() {
             <p className="text-muted-foreground">No posts yet. Check back soon!</p>
           </div>
         )}
-      </div>
     </div>
   )
 }

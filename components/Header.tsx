@@ -11,6 +11,7 @@ import {
   SheetTrigger,
 } from '@/components/ui/sheet'
 import { Menu } from 'lucide-react'
+import { ThemeToggle } from '@/components/ThemeToggle'
 
 export default function Header() {
   return (
@@ -21,7 +22,8 @@ export default function Header() {
           <span className="text-sm font-semibold tracking-tight">ProductivityTech</span>
         </Link>
 
-        <nav className="hidden items-center gap-6 md:flex">
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex items-center gap-6">
           <Link
             href="/blog"
             className="text-sm text-muted-foreground transition-colors hover:text-foreground"
@@ -40,63 +42,58 @@ export default function Header() {
           >
             About
           </Link>
+          <ThemeToggle />
         </nav>
 
-        <div className="flex items-center gap-2">
-          <Button variant="ghost" className="hidden sm:inline-flex" asChild>
-            <Link href="/blog">Read</Link>
-          </Button>
-          <Button className="hidden sm:inline-flex" asChild>
-            <Link href="/products">
-              Explore
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
-          </Button>
-          <Sheet>
-            <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="md:hidden">
-                <Menu className="h-5 w-5" />
-                <span className="sr-only">Toggle menu</span>
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="right" className="w-[300px] sm:w-[400px]">
-              <SheetHeader>
-                <SheetTitle>Menu</SheetTitle>
-              </SheetHeader>
-              <nav className="flex flex-col gap-1 mt-8">
-                <Link
-                  href="/blog"
-                  className="text-foreground hover:text-primary transition-colors py-3 px-2 rounded-md hover:bg-muted/50"
-                >
-                  Blog
-                </Link>
-                <Link
-                  href="/products"
-                  className="text-foreground hover:text-primary transition-colors py-3 px-2 rounded-md hover:bg-muted/50"
-                >
-                  Products
-                </Link>
-                <Link
-                  href="/about"
-                  className="text-foreground hover:text-primary transition-colors py-3 px-2 rounded-md hover:bg-muted/50"
-                >
-                  About
-                </Link>
-                <div className="flex flex-col gap-3 mt-4 pt-4 border-t border-border">
-                  <Button asChild className="w-full">
-                    <Link href="/products">
-                      Explore
-                      <ArrowRight className="ml-2 h-4 w-4" />
-                    </Link>
-                  </Button>
-                  <Button asChild variant="outline" className="w-full">
-                    <Link href="/contact">Contact</Link>
-                  </Button>
+        {/* Mobile Hamburger Menu */}
+        <Sheet>
+          <SheetTrigger asChild>
+            <Button variant="ghost" size="icon" className="md:hidden">
+              <Menu className="h-5 w-5" />
+              <span className="sr-only">Toggle menu</span>
+            </Button>
+          </SheetTrigger>
+          <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+            <SheetHeader>
+              <SheetTitle>Menu</SheetTitle>
+            </SheetHeader>
+            <nav className="flex flex-col gap-1 mt-8">
+              <Link
+                href="/blog"
+                className="text-foreground hover:text-primary transition-colors py-3 px-2 rounded-md hover:bg-muted/50"
+              >
+                Blog
+              </Link>
+              <Link
+                href="/products"
+                className="text-foreground hover:text-primary transition-colors py-3 px-2 rounded-md hover:bg-muted/50"
+              >
+                Products
+              </Link>
+              <Link
+                href="/about"
+                className="text-foreground hover:text-primary transition-colors py-3 px-2 rounded-md hover:bg-muted/50"
+              >
+                About
+              </Link>
+              <div className="flex flex-col gap-3 mt-4 pt-4 border-t border-border">
+                <Button asChild className="w-full">
+                  <Link href="/products">
+                    Explore
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+                <Button asChild variant="outline" className="w-full">
+                  <Link href="/contact">Contact</Link>
+                </Button>
+                <div className="flex items-center justify-between pt-2">
+                  <span className="text-sm text-muted-foreground">Theme</span>
+                  <ThemeToggle />
                 </div>
-              </nav>
-            </SheetContent>
-          </Sheet>
-        </div>
+              </div>
+            </nav>
+          </SheetContent>
+        </Sheet>
       </div>
     </header>
   )

@@ -140,4 +140,71 @@
   .text-balance {
     text-wrap: balance;
   }
+  
+  .article-content h1:first-of-type {
+    display: none;
+  }
+}
+
+/* Article content typography - Linear style spacing */
+.article-content h2 {
+  margin-top: 3.5rem !important;
+  margin-bottom: 1.5rem !important;
+  font-size: 1.875rem !important;
+  line-height: 2.25rem !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.025em !important;
+  border-bottom: 1px solid hsl(var(--border) / 0.4) !important;
+  padding-bottom: 0.5rem !important;
+}
+
+.article-content h2:first-child {
+  margin-top: 0 !important;
+}
+
+.article-content h3 {
+  margin-top: 2.5rem !important;
+  margin-bottom: 1rem !important;
+  font-size: 1.5rem !important;
+  line-height: 2rem !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.025em !important;
+  border-bottom: none !important;
+}
+
+.article-content h3:first-child {
+  margin-top: 0 !important;
+}
+
+.article-content h4 {
+  margin-top: 2rem !important;
+  margin-bottom: 1rem !important;
+  font-size: 1.25rem !important;
+  line-height: 1.75rem !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.025em !important;
+}
+
+.article-content h4:first-child {
+  margin-top: 0 !important;
+}
+
+.article-content p {
+  margin-bottom: 1.5rem !important;
+  line-height: 1.7 !important;
+}
+
+.article-content ul,
+.article-content ol {
+  margin-bottom: 1.75rem;
+}
+
+.article-content li {
+  margin-bottom: 0.5rem;
+  line-height: 1.7;
+}
+
+.article-content blockquote {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }

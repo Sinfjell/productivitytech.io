@@ -37,32 +37,32 @@ export const articlePortableTextComponents: PortableTextComponents = {
   },
   block: {
     h1: ({ children }) => (
-      <h1 className="text-3xl font-semibold tracking-tight mt-10 mb-6 first:mt-0">
+      <h1 className="text-3xl sm:text-4xl font-semibold tracking-tight first:hidden">
         {children}
       </h1>
     ),
     h2: ({ children }) => (
-      <h2 className="text-2xl font-semibold tracking-tight mt-10 mb-5 first:mt-0 border-b border-border/40 pb-2">
+      <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight">
         {children}
       </h2>
     ),
     h3: ({ children }) => (
-      <h3 className="text-xl font-semibold tracking-tight mt-8 mb-4 first:mt-0">
+      <h3 className="text-2xl sm:text-3xl font-semibold tracking-tight">
         {children}
       </h3>
     ),
     h4: ({ children }) => (
-      <h4 className="text-lg font-semibold tracking-tight mt-6 mb-3 first:mt-0">
+      <h4 className="text-xl sm:text-2xl font-semibold tracking-tight">
         {children}
       </h4>
     ),
     blockquote: ({ children }) => (
-      <blockquote className="border-l-2 border-border/60 pl-4 italic my-6 text-muted-foreground/90 leading-relaxed">
+      <blockquote className="border-l-2 border-border/60 pl-4 italic my-8 text-muted-foreground/90 leading-relaxed">
         {children}
       </blockquote>
     ),
     normal: ({ children }) => (
-      <p className="mb-6 leading-relaxed text-foreground/90">
+      <p className="leading-[1.7] text-foreground/90">
         {children}
       </p>
     ),
@@ -102,12 +102,12 @@ export const articlePortableTextComponents: PortableTextComponents = {
   },
   listItem: {
     bullet: ({ children }) => (
-      <li className="ml-2 leading-relaxed text-foreground/90 pl-1">
+      <li className="ml-2 leading-[1.7] text-foreground/90 pl-1">
         {children}
       </li>
     ),
     number: ({ children }) => (
-      <li className="ml-2 leading-relaxed text-foreground/90 pl-1">
+      <li className="ml-2 leading-[1.7] text-foreground/90 pl-1">
         {children}
       </li>
     ),

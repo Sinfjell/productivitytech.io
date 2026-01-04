@@ -1,6 +1,3 @@
-import Image from 'next/image'
-import { urlFor } from '@/lib/sanity/image'
-
 interface Author {
   _id: string
   name: string
@@ -22,42 +19,31 @@ export function ArticleMeta({ authors, publishedAt }: ArticleMetaProps) {
   }
 
   return (
-    <div className="mt-6 flex items-center gap-4 text-sm text-muted-foreground">
+    <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
       {hasAuthors && (
-        <div className="flex items-center gap-3">
+        <>
           {authors.map((author, index) => (
-            <div key={author._id} className="flex items-center gap-2">
-              {author.image && (
-                <div className="relative h-6 w-6 overflow-hidden rounded-full">
-                  <Image
-                    src={urlFor(author.image).width(48).height(48).url()}
-                    alt={author.name}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-              )}
-              <span className="font-medium">{author.name}</span>
-              {index < authors.length - 1 && (
-                <span className="text-muted-foreground/60">,</span>
-              )}
-            </div>
+            <span key={author._id} className="font-medium text-foreground">
+              {author.name}
+              {index < authors.length - 1 && <span className="text-muted-foreground/60">, </span>}
+            </span>
           ))}
-        </div>
+        </>
       )}
       {hasAuthors && hasDate && (
         <span className="text-muted-foreground/60">·</span>
       )}
       {hasDate && (
-        <time dateTime={publishedAt}>
+        <time dateTime={publishedAt} className="text-muted-foreground">
           {new Date(publishedAt).toLocaleDateString('en-US', {
-            year: 'numeric',
             month: 'long',
             day: 'numeric',
+            year: 'numeric',
           })}
         </time>
       )}
     </div>
   )
 }
+
 

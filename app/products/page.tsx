@@ -17,8 +17,7 @@ export default async function ProductsPage() {
   }
 
   return (
-    <div className="mx-auto max-w-6xl px-4">
-      <div className="py-16 sm:py-20">
+    <div className="mx-auto max-w-6xl px-4 py-16 sm:py-20">
         <div className="mb-12">
           <h1 className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl">
             Products
@@ -56,12 +55,9 @@ export default async function ProductsPage() {
                       <p className="text-lg font-semibold text-primary">
                         {product.pricing.displayText}
                       </p>
-                      <Link
-                        href={`/products/${product.slug.current}`}
-                        className="inline-flex items-center text-sm font-medium text-primary transition-colors hover:underline"
-                      >
+                      <span className="inline-flex items-center text-sm font-medium text-primary transition-colors hover:underline">
                         View <ArrowRight className="ml-1 h-4 w-4" />
-                      </Link>
+                      </span>
                     </CardFooter>
                   )}
                 </Link>
@@ -73,7 +69,6 @@ export default async function ProductsPage() {
             <p className="text-muted-foreground">No products yet. Check back soon!</p>
           </div>
         )}
-      </div>
     </div>
   )
 }
