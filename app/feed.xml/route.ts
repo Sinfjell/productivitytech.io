@@ -1,6 +1,8 @@
 import { client } from '@/lib/sanity/client'
 import { postsQuery } from '@/lib/sanity/queries'
 
+export const revalidate = 60
+
 export async function GET() {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://productivitytech.io'
   const posts = await client.fetch(postsQuery)
