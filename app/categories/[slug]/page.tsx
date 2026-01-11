@@ -7,6 +7,8 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Badge } from '@/components/ui/badge'
 import { ArrowRight } from 'lucide-react'
 
+export const revalidate = 60
+
 export async function generateStaticParams() {
   const categories = await client.fetch(categoriesQuery)
   return (categories || []).map((category: any) => ({
