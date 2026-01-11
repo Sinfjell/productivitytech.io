@@ -1,5 +1,5 @@
 import { client } from '@/lib/sanity/client'
-import { postsQuery } from '@/lib/sanity/queries'
+import { postsQuery, categoriesQuery } from '@/lib/sanity/queries'
 import Link from 'next/link'
 import Image from 'next/image'
 import { urlFor } from '@/lib/sanity/image'
@@ -7,17 +7,25 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Badge } from '@/components/ui/badge'
 import { ArrowRight } from 'lucide-react'
 
-export const revalidate = 60
+export const dynamic = 'force-static'
 
-export default async function CategoryPage({ params }: { params: { slug: string } }) {
+export async function generateStaticParams() {
+  const categories = await client.fetch(categoriesQuery)
+  return (categories || []).map((category: any) => ({
+    slug: category.slug.current,
+  }))
+}
+
+export default async function CategoryPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
   // Fetch all posts and filter by category on the client side
   // In production, you'd want a more efficient query
   const allPosts = await client.fetch(postsQuery)
   const categoryPosts = allPosts.filter((post: any) =>
-    post.categories?.some((cat: any) => cat.slug.current === params.slug)
+    post.categories?.some((cat: any) => cat.slug.current === slug)
   )
 
-  const categoryName = params.slug.replace(/-/g, ' ')
+  const categoryName = slug.replace(/-/g, ' ')
 
   return (
     <div className="mx-auto max-w-6xl px-4">
