@@ -3,8 +3,6 @@ import { pageBySlugQuery, pagesQuery } from '@/lib/sanity/queries'
 import { PortableText } from '@portabletext/react'
 import { portableTextComponents } from '@/components/portable-text/PortableTextComponents'
 
-export const dynamic = 'force-static'
-
 export async function generateStaticParams() {
   const pages = await client.fetch(pagesQuery)
   return (pages || []).map((page: any) => ({
