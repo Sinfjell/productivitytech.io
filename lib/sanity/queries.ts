@@ -93,6 +93,10 @@ export const categoriesQuery = `*[_type == "category"] | order(title asc) {
 }`
 
 // Page queries
+export const pagesQuery = `*[_type == "page" && defined(slug.current)] {
+  slug
+}`
+
 export const pageBySlugQuery = `*[_type == "page" && slug.current == $slug][0] {
   _id,
   title,

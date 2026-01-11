@@ -1,9 +1,16 @@
 import { client } from '@/lib/sanity/client'
-import { pageBySlugQuery } from '@/lib/sanity/queries'
+import { pageBySlugQuery, pagesQuery } from '@/lib/sanity/queries'
 import { PortableText } from '@portabletext/react'
 import { portableTextComponents } from '@/components/portable-text/PortableTextComponents'
 
-export const revalidate = 60
+export const dynamic = 'force-static'
+
+export async function generateStaticParams() {
+  const pages = await client.fetch(pagesQuery)
+  return (pages || []).map((page: any) => ({
+    slug: page.slug.current,
+  }))
+}
 
 export default async function LegalPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
