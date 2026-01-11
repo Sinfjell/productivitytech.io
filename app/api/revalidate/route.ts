@@ -62,9 +62,15 @@ export async function POST(request: NextRequest) {
         break
 
       case 'page':
-        // Revalidate the specific legal page
+        // Revalidate the specific page
         if (slug?.current) {
-          pathsToRevalidate.push(`/legal/${slug.current}`)
+          // About page uses /about route, not /legal/about
+          if (slug.current === 'about') {
+            pathsToRevalidate.push('/about')
+          } else {
+            // Other pages use /legal/[slug] route
+            pathsToRevalidate.push(`/legal/${slug.current}`)
+          }
         }
         // Revalidate sitemap
         pathsToRevalidate.push('/sitemap.xml')
